@@ -1,0 +1,1 @@
+in this chapter, we have installed nodejs and mongodb compass
