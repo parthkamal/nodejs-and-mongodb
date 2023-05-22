@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require('express');//global package, non-core module
 const mongoose = require('mongoose'); 
 const morgan = require('morgan'); 
 
+const employeeRoutes = require('./routes/Employee');
+
 mongoose.connect('mongodb://localhost:27017/mongotest').
 	catch((error) => handleError(error));
-
 
 
 const db = mongoose.connection; 
@@ -21,6 +22,12 @@ const app = express();
 app.use(morgan('dev')); 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}));
+
+
+//routes
+app.use('/api/employee',employeeRoutes);
+
+
 
 
 app.listen(3000, ()=> {
