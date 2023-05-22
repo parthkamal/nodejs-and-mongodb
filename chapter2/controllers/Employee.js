@@ -36,6 +36,15 @@ const store = (request, response, next) => {
             age
         });
 
+
+    if(request.file) {
+        console.log(request.file.path);
+        console.log('file uploaded from the client');
+    }
+
+
+    if(request.file) newEmployee.avatar = request.file.path
+
     newEmployee.save()
         .then(data => response.json({ data }))
         .catch(error => response.json({ error: error }));

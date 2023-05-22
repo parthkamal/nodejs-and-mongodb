@@ -10,6 +10,7 @@ const employeeSchema = new mongoose.Schema({
 	},
 	phone: String,
 	age: Number,
+	avatar: String
 
 },
 	{ timestamps: true });
