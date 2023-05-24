@@ -1,0 +1,27 @@
+Nodejs and mongodb tutorial 
+
+Nodejs server in chapter2
+
+
+Morgan npm - HTTP request logger middleware for node.js
+//what is mvc architecture, and how should we use it in the node js application?
+
+
+
+//multer npm
+
+Multer npm - multer npm ek nodejs middlewares hai jo help karta hai client se multipart/form-data upload karne me (for example - jpg/png etc). 
+Isme kayi trah ki filtering krskte hai jaise ki 
+
+We can define the destination folder and the format of the filename to be stored. 
+We can define the capacity to upload single or multiple files. 
+We can define the limit, memory storage. too
+
+Multer is designed to work seamlessly with the Express.js web framework.
+
+
+Bcrypt js - 
+
+It is a npm package which is used to hash and compare the password.
+
+
