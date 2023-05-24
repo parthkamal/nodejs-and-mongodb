@@ -6,7 +6,7 @@ const employeeRoutes = require('./routes/Employee');
 const authRoutes = require('./routes/auth');
 
 mongoose.connect('mongodb://localhost:27017/mongotest').
-	catch((error) => handleError(error));
+	catch((error) => console.log(error));
 
 
 const db = mongoose.connection;

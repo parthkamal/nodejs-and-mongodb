@@ -5,9 +5,11 @@ const router = express.Router();
 const EmployeeController = require('../controllers/Employee');
 
 const upload = require('../middlewares/upload');
+const authenticate = require('../middlewares/authenticate');
 
 
-router.get('/',EmployeeController.index);
+
+router.get('/',authenticate,EmployeeController.index);
 router.get('/show',EmployeeController.show);
 router.post('/store',upload.single('avatar'),EmployeeController.store);
 router.post('/update',EmployeeController.update);
