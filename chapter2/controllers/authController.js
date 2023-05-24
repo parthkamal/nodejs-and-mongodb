@@ -29,10 +29,12 @@ const login = (request, response, next) => {
             const auth = bcrypt.compareSync(password, user.password);
             if (auth) {
                 //assign the jwt token
-                const token = jwt.sign({ name: user.name }, 'secretkey', { expiresIn: '1h' });
+                const token = jwt.sign({ name: user.name }, 'thesecrettoken', { expiresIn: '1h' });
+                const refreshtoken = jwt.sign({ name: user.name }, 'refreshtokensecret', { expiresIn: '48h' });
+
                 const message = 'login successful';
 
-                response.json({ message, token });
+                response.json({ message, token, refreshtoken});
             } else {
                 const message = "password not matched"
                 response.json({ message });
@@ -40,8 +42,22 @@ const login = (request, response, next) => {
         })
 }
 
+const refreshtoken = (request, response, next)=> {
+    const refreshtoken = request.body.refreshtoken;
+    jwt.verify(refreshtoken,'refreshtokensecret',(error,decode)=>{
+        if(error)response.status(400).json({error});
+    else {
+        const token = jwt.sign({ name: decode.name }, 'thesecrettoken', { expiresIn: '1h' });
+        const refreshtoken = request.body.refreshtoken;
+        const message = 'token refreshed successfully';
+        response.status(200).json({message,token,refreshtoken});
+
+    }
+    })
+}
 
 
-module.exports = { register, login }
+
+module.exports = { register, login, refreshtoken }
 
 

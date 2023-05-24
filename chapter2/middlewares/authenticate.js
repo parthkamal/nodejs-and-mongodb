@@ -11,6 +11,11 @@ const authenticate = (request, response, next) => {
 
     }catch (error){
 
+        if(error.name == "TokenExpiredErro"){
+            const message = 'token expired';
+            response.status(401).json({message});
+        }
+
         const message = 'authentication failed';
         response.json({message});
     }
